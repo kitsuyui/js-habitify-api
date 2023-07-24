@@ -5,7 +5,7 @@
   "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
   "description": "API Wrapper for Habitify",
   "scripts": {
-    "build": "yarn build:all",
+    "build": "yarn build:lib",
     "build:lib": "tsup src/index.ts --dts --format cjs,esm --minify --clean --sourcemap",
     "dev:lib": "tsup src/index.ts --dts --format cjs,esm --minify --clean --sourcemap --watch --onSuccess 'node dist/index.js'",
     "test": "jest --coverage",

@@ -1,0 +1,126 @@
+{
+  "errors": [],
+  "message": "Success",
+  "data": [
+    {
+      "id": "1234",
+      "name": "なんらかのタスク",
+      "is_archived": false,
+      "start_date": "2023-01-01T00:00:00.000Z",
+      "time_of_day": ["any_time"],
+      "goal": {
+        "unit_type": "rep",
+        "value": 1,
+        "periodicity": "weekly"
+      },
+      "goal_history_items": [
+        {
+          "unit_type": "rep",
+          "value": 1,
+          "periodicity": "weekly"
+        },
+        {
+          "unit_type": "rep",
+          "value": 2,
+          "periodicity": "weekly"
+        }
+      ],
+      "log_method": "manual",
+      "recurrence": "DTSTART:20230101T135620Z\nRRULE:FREQ=DAILY",
+      "remind": [],
+      "area": {
+        "id": "5678",
+        "name": "何らかのカテゴリ",
+        "priority": "U"
+      },
+      "created_date": "2023-07-05T13:56:20.407Z",
+      "priority": -1.2676506000806554e30,
+      "status": "in_progress",
+      "progress": {
+        "current_value": 0,
+        "target_value": 1,
+        "unit_type": "rep",
+        "periodicity": "weekly",
+        "reference_date": "2023-03-03T00:00:00.000Z"
+      },
+      "habit_type": 1
+    },
+    {
+      "id": "2345",
+      "name": "なんらかのタスク 2",
+      "is_archived": false,
+      "start_date": "2023-01-01T00:00:00.000Z",
+      "time_of_day": ["any_time"],
+      "goal": {
+        "unit_type": "rep",
+        "value": 1,
+        "periodicity": "daily"
+      },
+      "goal_history_items": [
+        {
+          "unit_type": "rep",
+          "value": 1,
+          "periodicity": "weekly"
+        },
+        {
+          "unit_type": "rep",
+          "value": 2,
+          "periodicity": "weekly"
+        }
+      ],
+      "log_method": "manual",
+      "recurrence": "DTSTART:20230101T135620Z\nRRULE:FREQ=DAILY",
+      "remind": [],
+      "area": {
+        "id": "5678",
+        "name": "何らかのカテゴリ",
+        "priority": "U"
+      },
+      "created_date": "2023-07-05T13:56:20.407Z",
+      "priority": -1.2676506000806554e30,
+      "status": "completed",
+      "progress": {
+        "current_value": 0,
+        "target_value": 1,
+        "unit_type": "rep",
+        "periodicity": "daily",
+        "reference_date": "2023-03-03T00:00:00.000Z"
+      },
+      "habit_type": 1
+    },
+    {
+      "id": "3456",
+      "name": "なんらかのタスク 3",
+      "is_archived": false,
+      "start_date": "2023-01-01T00:00:00.000Z",
+      "time_of_day": ["any_time"],
+      "goal": {
+        "unit_type": "rep",
+        "value": 1,
+        "periodicity": "daily"
+      },
+      "goal_history_items": [],
+      "log_method": "manual",
+      "recurrence": "DTSTART:20230101T135620Z\nRRULE:FREQ=DAILY",
+      "remind": [],
+      "area": {
+        "id": "5678",
+        "name": "何らかのカテゴリ",
+        "priority": "U"
+      },
+      "created_date": "2023-07-05T13:56:20.407Z",
+      "priority": -1.2676506000806554e30,
+      "status": "in_progress",
+      "progress": {
+        "current_value": 0,
+        "target_value": 1,
+        "unit_type": "rep",
+        "periodicity": "daily",
+        "reference_date": "2023-03-03T00:00:00.000Z"
+      },
+      "habit_type": 1
+    }
+  ],
+  "version": "v1.2",
+  "status": true
+}
