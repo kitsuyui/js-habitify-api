@@ -1,4 +1,4 @@
-# js-habitify
+# js-habitify-api
 
 Unofficial [Habitify](https://www.habitify.me/) API client for JavaScript.
 API Docs: https://docs.habitify.me/
