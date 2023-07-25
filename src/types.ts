@@ -1,6 +1,6 @@
 export const HABITIFY_API_BASE_URL = 'https://api.habitify.me'
 export const HABITIFY_API_JOURNAL_URL = `${HABITIFY_API_BASE_URL}/journal`
-
+export const HABITIFY_API_LOGS_URL = `${HABITIFY_API_BASE_URL}/logs`
 // https://docs.habitify.me/core-resources/journal
 export interface JournalAPIResult {
   errors: unknown[]
@@ -61,3 +61,18 @@ export type LogMethod = 'manual' | 'appleHealth' | 'googleFit' | 'samsungHealth'
 export type DateString = string
 export type Recurrence = string
 export type IDString = string
+
+export interface LogsAPIResult {
+  errors: unknown[]
+  message: string
+  data: LogsContent[]
+  version: string
+  status: boolean
+}
+export interface LogsContent {
+  id: IDString
+  value: number
+  created_date: DateString
+  unit_type: UnitType
+  habit_id: IDString
+}
