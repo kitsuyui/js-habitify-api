@@ -33,6 +33,8 @@ jobs:
 
       - name: Test
         run: yarn test
+        env:
+          HABITIFY_API_KEY: ${{ secrets.HABITIFY_API_KEY }}
 
       - name: Test packaging
         run: yarn pack
