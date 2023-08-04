@@ -1,6 +1,8 @@
 import { describe, it, expect } from '@jest/globals'
 
 import { Client } from './habitify'
+import { HABITIFY_API_HABITS_URL, HabitAPIResult } from './types'
+import { validateHabit } from './validators'
 
 describe('habitify client', () => {
   it('getClientFromEnv', () => {
@@ -59,5 +61,16 @@ describe('habitify client', () => {
     )
     expect(result).toBeDefined()
     expect(result.data).toBeDefined()
+  })
+
+  it('fetchWithValidation failed with incompatible type', async () => {
+    const client = Client.getClientFromEnv()
+
+    // Use HabitAPIResult as a type that is incompatible with the actual data type (HabitsAPIResult)
+    const result = client.fetchWithValidation<HabitAPIResult>(
+      HABITIFY_API_HABITS_URL,
+      validateHabit
+    )
+    await expect(result).rejects.toThrowError()
   })
 })
