@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/LogsAPIResult",
+  "definitions": {
+    "LogsAPIResult": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {}
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LogsContent"
+          }
+        },
+        "version": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "errors",
+        "message",
+        "data",
+        "version",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "LogsContent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/IDString"
+        },
+        "value": {
+          "type": "number"
+        },
+        "created_date": {
+          "$ref": "#/definitions/DateString"
+        },
+        "unit_type": {
+          "$ref": "#/definitions/UnitType"
+        },
+        "habit_id": {
+          "$ref": "#/definitions/IDString"
+        }
+      },
+      "required": [
+        "id",
+        "value",
+        "created_date",
+        "unit_type",
+        "habit_id"
+      ],
+      "additionalProperties": false
+    },
+    "IDString": {
+      "type": "string"
+    },
+    "DateString": {
+      "type": "string"
+    },
+    "UnitType": {
+      "type": "string",
+      "const": "rep"
+    }
+  }
+}

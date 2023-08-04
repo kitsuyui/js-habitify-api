@@ -1,0 +1,236 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/JournalAPIResult",
+  "definitions": {
+    "JournalAPIResult": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {}
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/JournalContent"
+          }
+        },
+        "version": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "errors",
+        "message",
+        "data",
+        "version",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "JournalContent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/IDString"
+        },
+        "name": {
+          "type": "string"
+        },
+        "is_archived": {
+          "type": "boolean"
+        },
+        "start_date": {
+          "$ref": "#/definitions/DateString"
+        },
+        "time_of_day": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimeOfDay"
+          }
+        },
+        "goal": {
+          "$ref": "#/definitions/GoalItem"
+        },
+        "goal_history_items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GoalItem"
+          }
+        },
+        "log_method": {
+          "$ref": "#/definitions/LogMethod"
+        },
+        "recurrence": {
+          "$ref": "#/definitions/Recurrence"
+        },
+        "remind": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Remind"
+          }
+        },
+        "area": {
+          "$ref": "#/definitions/Area"
+        },
+        "created_date": {
+          "$ref": "#/definitions/DateString"
+        },
+        "priority": {
+          "type": "number"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "progress": {
+          "$ref": "#/definitions/Progress"
+        },
+        "habit_type": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "is_archived",
+        "start_date",
+        "time_of_day",
+        "goal",
+        "goal_history_items",
+        "log_method",
+        "recurrence",
+        "remind",
+        "area",
+        "created_date",
+        "priority",
+        "status",
+        "progress",
+        "habit_type"
+      ],
+      "additionalProperties": false
+    },
+    "IDString": {
+      "type": "string"
+    },
+    "DateString": {
+      "type": "string"
+    },
+    "TimeOfDay": {
+      "type": "string",
+      "enum": [
+        "any_time",
+        "morning",
+        "afternoon",
+        "evening"
+      ]
+    },
+    "GoalItem": {
+      "type": "object",
+      "properties": {
+        "unit_type": {
+          "$ref": "#/definitions/UnitType"
+        },
+        "value": {
+          "type": "number"
+        },
+        "periodicity": {
+          "$ref": "#/definitions/Periodicity"
+        }
+      },
+      "required": [
+        "unit_type",
+        "value",
+        "periodicity"
+      ],
+      "additionalProperties": false
+    },
+    "UnitType": {
+      "type": "string",
+      "const": "rep"
+    },
+    "Periodicity": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly"
+      ]
+    },
+    "LogMethod": {
+      "type": "string",
+      "enum": [
+        "manual",
+        "appleHealth",
+        "googleFit",
+        "samsungHealth"
+      ]
+    },
+    "Recurrence": {
+      "type": "string"
+    },
+    "Remind": {},
+    "Area": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/IDString"
+        },
+        "name": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "priority"
+      ],
+      "additionalProperties": false
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "in_progress",
+        "completed",
+        "failed",
+        "skipped"
+      ]
+    },
+    "Progress": {
+      "type": "object",
+      "properties": {
+        "current_value": {
+          "type": "number"
+        },
+        "target_value": {
+          "type": "number"
+        },
+        "unit_type": {
+          "$ref": "#/definitions/UnitType"
+        },
+        "periodicity": {
+          "$ref": "#/definitions/Periodicity"
+        },
+        "reference_date": {
+          "$ref": "#/definitions/DateString"
+        }
+      },
+      "required": [
+        "current_value",
+        "target_value",
+        "unit_type",
+        "periodicity",
+        "reference_date"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
