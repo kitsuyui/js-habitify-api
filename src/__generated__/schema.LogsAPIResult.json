@@ -25,13 +25,7 @@
           "type": "boolean"
         }
       },
-      "required": [
-        "errors",
-        "message",
-        "data",
-        "version",
-        "status"
-      ],
+      "required": ["errors", "message", "data", "version", "status"],
       "additionalProperties": false
     },
     "LogsContent": {
@@ -53,13 +47,7 @@
           "$ref": "#/definitions/IDString"
         }
       },
-      "required": [
-        "id",
-        "value",
-        "created_date",
-        "unit_type",
-        "habit_id"
-      ],
+      "required": ["id", "value", "created_date", "unit_type", "habit_id"],
       "additionalProperties": false
     },
     "IDString": {

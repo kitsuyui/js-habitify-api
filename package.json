@@ -7,7 +7,7 @@
   "scripts": {
     "build": "\"$npm_execpath\" run build:schema && \"$npm_execpath\" run build:lib",
     "build:lib": "tsup src/**/*.ts --dts src/index.ts --format cjs,esm --minify --clean --sourcemap",
-    "build:schema": "node -r esbuild-register build-schema.ts",
+    "build:schema": "node -r esbuild-register build-schema.ts && prettier --write src/__generated__/",
     "dev:lib": "\"$npm_execpath\" run build:lib --watch --onSuccess 'node dist/index.js'",
     "test": "jest --coverage",
     "lint": "eslint --ext .ts src",
