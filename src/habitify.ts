@@ -23,7 +23,11 @@ import type { ValidateFunction } from 'ajv/dist/jtd'
  * @returns Client
  */
 export class Client {
-  constructor(private apiKey: string) {}
+  private constructor(private apiKey: string) {}
+
+  static create(apiKey: string): Client {
+    return new Client(apiKey)
+  }
 
   /**
    * Get Client instance from environment variables (HABITIFY_API_KEY)
@@ -35,7 +39,7 @@ export class Client {
     if (apiKey === undefined) {
       throw new Error('HABITIFY_API_KEY is not set')
     }
-    return new Client(apiKey)
+    return Client.create(apiKey)
   }
 
   /**
@@ -44,7 +48,7 @@ export class Client {
    * @returns data from Habitify API {T}
    * @throws Error if fetch failed
    */
-  async fetch(url: string): Promise<unknown> {
+  private async fetch(url: string): Promise<unknown> {
     const response = await fetch(url, {
       headers: {
         Authorization: this.apiKey,
@@ -56,7 +60,7 @@ export class Client {
     return await response.json()
   }
 
-  async fetchWithValidation<T>(
+  private async fetchWithValidation<T>(
     url: string,
     // should be ValidateFunction<T> but I don't know how to fix it
     validator: ValidateFunction<unknown>
