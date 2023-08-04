@@ -107,7 +107,7 @@ export interface HabitContent {
   log_method: LogMethod
   recurrence: Recurrence
   remind: Remind[]
-  area: Area
+  area: Area | null
   created_date: DateString
   priority: number
 }
