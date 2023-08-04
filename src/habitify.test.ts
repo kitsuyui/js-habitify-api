@@ -44,4 +44,20 @@ describe('habitify client', () => {
     expect(result.data).toBeDefined()
     expect(result.data.length).toBeGreaterThan(0)
   })
+
+  it('fetchHabits', async () => {
+    const client = Client.getClientFromEnv()
+    const result = await client.fetchHabits()
+    expect(result).toBeDefined()
+    expect(result.data).toBeDefined()
+  })
+
+  it('fetchHabitById', async () => {
+    const client = Client.getClientFromEnv()
+    const result = await client.fetchHabitById(
+      '5DD6DC1C-5640-4D9B-9FD9-DEE0000BB845'
+    )
+    expect(result).toBeDefined()
+    expect(result.data).toBeDefined()
+  })
 })

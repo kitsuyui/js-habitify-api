@@ -1,6 +1,8 @@
 export const HABITIFY_API_BASE_URL = 'https://api.habitify.me'
 export const HABITIFY_API_JOURNAL_URL = `${HABITIFY_API_BASE_URL}/journal`
 export const HABITIFY_API_LOGS_URL = `${HABITIFY_API_BASE_URL}/logs`
+export const HABITIFY_API_HABITS_URL = `${HABITIFY_API_BASE_URL}/habits`
+
 // https://docs.habitify.me/core-resources/journal
 export interface JournalAPIResult {
   errors: unknown[]
@@ -75,4 +77,37 @@ export interface LogsContent {
   created_date: DateString
   unit_type: UnitType
   habit_id: IDString
+}
+
+// https://docs.habitify.me/core-resources/habits
+export interface HabitsAPIResult {
+  errors: unknown[]
+  message: string
+  data: HabitContent[]
+  version: string
+  status: boolean
+}
+
+export interface HabitAPIResult {
+  errors: unknown[]
+  message: string
+  data: HabitContent
+  version: string
+  status: boolean
+}
+
+export interface HabitContent {
+  id: IDString
+  name: string
+  is_archived: boolean
+  start_date: DateString
+  time_of_day: TimeOfDay[]
+  goal: GoalItem
+  goal_history_items: GoalItem[]
+  log_method: LogMethod
+  recurrence: Recurrence
+  remind: Remind[]
+  area: Area
+  created_date: DateString
+  priority: number
 }
