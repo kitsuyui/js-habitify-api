@@ -27,7 +27,7 @@ npm install habitify-api
 
 ```js
 import { Client } from 'habitify-api'
-// const client = new Client('...')  // You can initialize client with token
+// const client = Client.create('...')  // You can initialize client with token
 const client = Client.getClientFromEnv() // Or get client from environment variables HABITIFY_API_TOKEN
 // https://docs.habitify.me/date-format
 const data = await client.fetchJournal('2023-07-25T00:00:00+09:00') // fetch journal of 2023-07-25
