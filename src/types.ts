@@ -23,11 +23,11 @@ export interface JournalContent {
   log_method: LogMethod
   recurrence: Recurrence
   remind: Remind[]
-  area: Area
+  area?: Area | null
   created_date: DateString
   priority: number
   status: Status
-  progress: Progress
+  progress?: Progress
   habit_type: number
 }
 
@@ -52,7 +52,7 @@ export interface Progress {
 }
 
 export type Remind = unknown // TODO
-export type Status = 'in_progress' | 'completed' | 'failed' | 'skipped'
+export type Status = 'in_progress' | 'completed' | 'failed' | 'skipped' | 'none'
 // https://docs.habitify.me/enum/time-of-day
 export type TimeOfDay = 'any_time' | 'morning' | 'afternoon' | 'evening'
 export type UnitType = 'rep' // https://docs.habitify.me/enum/unit-type#scalar
