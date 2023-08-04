@@ -3,7 +3,10 @@ import {
   JournalAPIResult,
   HABITIFY_API_JOURNAL_URL,
   HABITIFY_API_LOGS_URL,
+  HABITIFY_API_HABITS_URL,
   LogsAPIResult,
+  HabitAPIResult,
+  HabitsAPIResult,
 } from './types'
 
 /**
@@ -49,6 +52,7 @@ export class Client {
 
   /**
    * Fetch journal data from Habitify API.
+   * https://docs.habitify.me/core-resources/journal
    * @param targetDate A subset of ISO 8601 format: https://docs.habitify.me/date-format (e.g. 2023-07-24T00:00:00+09:00) {DateString}
    * @returns data from Habitify API {JournalAPIResult}
    */
@@ -62,6 +66,7 @@ export class Client {
 
   /**
    * Fetch logs data from Habitify API.
+   * https://docs.habitify.me/core-resources/habits/logs
    * @param habitId {string}
    * @param fromDate A subset of ISO 8601 format: https://docs.habitify.me/date-format (e.g. 2023-07-01T00:00:00+09:00) {DateString}
    * @param toDate A subset of ISO 8601 format: https://docs.habitify.me/date-format (e.g. 2023-07-24T00:00:00+09:00) {DateString}
@@ -83,5 +88,25 @@ export class Client {
     })
     const url = `${HABITIFY_API_LOGS_URL}/${habitId}?${query}`
     return await this.fetch<LogsAPIResult>(url)
+  }
+
+  /**
+   * Fetch habits data from Habitify API.
+   * https://docs.habitify.me/core-resources/habits
+   * @returns data from Habitify API {HabitsAPIResult}
+   */
+  async fetchHabits(): Promise<HabitsAPIResult> {
+    return await this.fetch<HabitsAPIResult>(HABITIFY_API_HABITS_URL)
+  }
+
+  /**
+   * Fetch habit data from Habitify API.
+   * https://docs.habitify.me/core-resources/habits
+   * @param habitId {string}
+   * @returns data from Habitify API {HabitAPIResult}
+   */
+  async fetchHabitById(habitId: string): Promise<HabitAPIResult> {
+    const url = `${HABITIFY_API_HABITS_URL}/${habitId}`
+    return await this.fetch<HabitAPIResult>(url)
   }
 }
