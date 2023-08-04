@@ -71,7 +71,14 @@
           }
         },
         "area": {
-          "$ref": "#/definitions/Area"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Area"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "created_date": {
           "$ref": "#/definitions/DateString"
@@ -100,11 +107,9 @@
         "log_method",
         "recurrence",
         "remind",
-        "area",
         "created_date",
         "priority",
         "status",
-        "progress",
         "habit_type"
       ],
       "additionalProperties": false
@@ -169,7 +174,7 @@
     },
     "Status": {
       "type": "string",
-      "enum": ["in_progress", "completed", "failed", "skipped"]
+      "enum": ["in_progress", "completed", "failed", "skipped", "none"]
     },
     "Progress": {
       "type": "object",

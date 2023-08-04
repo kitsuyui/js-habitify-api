@@ -7,6 +7,7 @@ import {
   LogsAPIResult,
   HabitAPIResult,
   HabitsAPIResult,
+  UnitType,
 } from './types'
 import {
   validateHabit,
@@ -135,5 +136,67 @@ export class Client {
   async fetchHabitById(habitId: string): Promise<HabitAPIResult> {
     const url = `${HABITIFY_API_HABITS_URL}/${habitId}`
     return await this.fetchWithValidation<HabitAPIResult>(url, validateHabit)
+  }
+
+  /**
+   * Post habit log to Habitify API.
+   * https://docs.habitify.me/core-resources/habits/logs
+   * @param habitId {string}
+   * @param unitType {UnitType} (default: 'rep')
+   * @param targetDate A subset of ISO 8601 format: https://docs.habitify.me/date-format (e.g. 2023-07-24T00:00:00+09:00) {DateString}
+   * @param value {number} (default: 1)
+   * @throws Error if post failed
+   * @returns void
+   */
+  async postHabitLog({
+    habitId,
+    unitType,
+    targetDate,
+    value,
+  }: {
+    habitId: string
+    unitType?: UnitType
+    targetDate: string
+    value?: number
+  }): Promise<void> {
+    const url = `${HABITIFY_API_LOGS_URL}/${habitId}`
+    const body = {
+      unit_type: unitType ?? 'rep',
+      value: value ?? 1,
+      target_date: targetDate,
+    }
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: this.apiKey,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    })
+    if (!response.ok) {
+      throw new Error(`post failed: ${response.statusText}`)
+    }
+  }
+
+  /**
+   * Delete habit log from Habitify API.
+   */
+  async deleteHabitLog({
+    habitId,
+    logId,
+  }: {
+    habitId: string
+    logId: string
+  }): Promise<void> {
+    const url = `${HABITIFY_API_LOGS_URL}/${habitId}/${logId}`
+    const response = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        Authorization: this.apiKey,
+      },
+    })
+    if (!response.ok) {
+      throw new Error(`delete failed: ${response.statusText}`)
+    }
   }
 }

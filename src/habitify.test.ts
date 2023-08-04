@@ -56,9 +56,8 @@ describe('habitify client', () => {
 
   it('fetchHabitById', async () => {
     const client = Client.getClientFromEnv()
-    const result = await client.fetchHabitById(
-      '5DD6DC1C-5640-4D9B-9FD9-DEE0000BB845'
-    )
+    const testHabitId = '5DD6DC1C-5640-4D9B-9FD9-DEE0000BB845'
+    const result = await client.fetchHabitById(testHabitId)
     expect(result).toBeDefined()
     expect(result.data).toBeDefined()
   })
@@ -72,5 +71,93 @@ describe('habitify client', () => {
       validateHabit
     )
     await expect(result).rejects.toThrowError()
+  })
+
+  it('post and delete habit log', async () => {
+    const client = Client.getClientFromEnv()
+    const testHabitId = '5DD6DC1C-5640-4D9B-9FD9-DEE0000BB845'
+    const testBeginDate = '2023-08-04T00:00:00+09:00'
+    const testEndDate = '2023-08-05T00:00:00+09:00'
+
+    const beforePostLogs = await client.fetchLogs({
+      habitId: testHabitId,
+      fromDate: testBeginDate,
+      toDate: testEndDate,
+    })
+
+    await client.postHabitLog({
+      habitId: testHabitId,
+      unitType: 'rep',
+      targetDate: testBeginDate,
+    })
+
+    const afterPostLogs = await client.fetchLogs({
+      habitId: testHabitId,
+      fromDate: testBeginDate,
+      toDate: testEndDate,
+    })
+
+    expect(afterPostLogs.data.length).toBe(beforePostLogs.data.length + 1)
+
+    const lastLog = afterPostLogs.data[afterPostLogs.data.length - 1]
+    expect(lastLog.unit_type).toBe('rep')
+    expect(lastLog.habit_id).toBe(testHabitId)
+
+    await client.deleteHabitLog({
+      habitId: testHabitId,
+      logId: lastLog.id,
+    })
+
+    const afterDeleteLogs = await client.fetchLogs({
+      habitId: testHabitId,
+      fromDate: testBeginDate,
+      toDate: testEndDate,
+    })
+
+    expect(afterDeleteLogs.data.length).toBe(beforePostLogs.data.length)
+  })
+
+  it('post and delete habit log failed', async () => {
+    const client = Client.getClientFromEnv()
+    const testHabitId = '5DD6DC1C-5640-4D9B-9FD9-DEE0000BB845'
+    const testBeginDate = '2023-08-04T00:00:00+09:00'
+    const testEndDate = '2023-08-05T00:00:00+09:00'
+
+    const beforePostLogs = await client.fetchLogs({
+      habitId: testHabitId,
+      fromDate: testBeginDate,
+      toDate: testEndDate,
+    })
+
+    await expect(
+      client.postHabitLog({
+        habitId: testHabitId + '_invalid',
+        unitType: 'rep',
+        targetDate: testBeginDate,
+      })
+    ).rejects.toThrowError()
+
+    const afterPostLogs = await client.fetchLogs({
+      habitId: testHabitId,
+      fromDate: testBeginDate,
+      toDate: testEndDate,
+    })
+
+    expect(afterPostLogs.data.length).toBe(beforePostLogs.data.length)
+
+    await expect(
+      client.deleteHabitLog({
+        habitId: testHabitId + '_invalid',
+        logId: 'invalid',
+      })
+    ).rejects.toThrowError()
+
+    const afterDeleteLogs = await client.fetchLogs({
+      habitId: testHabitId,
+      fromDate: testBeginDate,
+      toDate: testEndDate,
+    })
+
+    expect(afterDeleteLogs.data.length).toBe(beforePostLogs.data.length)
   })
 })
