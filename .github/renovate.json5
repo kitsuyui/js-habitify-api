@@ -1,4 +1,7 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   extends: ['github>kitsuyui/renovate-config'],
+  // https://docs.renovatebot.com/configuration-options/#prhourlylimit
+  // 1 PR per hour to avoid conflicts with other PRs in test
+  prHourlyLimit: 1,
 }

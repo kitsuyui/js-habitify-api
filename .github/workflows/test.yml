@@ -1,6 +1,5 @@
 name: test
 on:
-  - push
   - pull_request
 jobs:
   test:
@@ -8,6 +7,9 @@ jobs:
 
     continue-on-error: true
     strategy:
+      # Restrict concurrent runs to one per workflow run
+      # Because the test uses habitify data and it must be run sequentially
+      max-parallel: 1
       fail-fast: false
       matrix:
         node-version: [18.x, 20.x]
