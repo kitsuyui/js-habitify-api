@@ -16,17 +16,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v2.4.0
+        with:
+          version: 8
+
       - uses: actions/setup-node@v3
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
-          cache: yarn
-          cache-dependency-path: yarn.lock
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
 
       - name: install and build
         run: |
-          yarn install
-          yarn build
+          pnpm install
+          pnpm build
 
       - name: update version
         if: github.event_name == 'release'
@@ -37,7 +41,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - run: yarn pack
+      - run: pnpm pack
 
       - name: Test installation
         run: |
@@ -45,7 +49,7 @@ jobs:
           built_dir=$(pwd)
           tempdir=$(mktemp -d)
           cd $tempdir
-          yarn add $built_dir/*.tgz
+          pnpm add $built_dir/*.tgz
           cd $built_dir
           rm -rf $tempdir
 

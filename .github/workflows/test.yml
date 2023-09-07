@@ -16,32 +16,37 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v2.4.0
+        with:
+          version: 8
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: yarn
-          cache-dependency-path: yarn.lock
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
 
       - name: Install dependencies
         run: |
-          yarn install
+          pnpm install
 
       - name: Lint
         run: |
-          yarn lint
-          yarn format --check
+          pnpm lint
+          pnpm format --check
 
       - name: Build
-        run: yarn build
+        run: pnpm build
 
       - name: Test
-        run: yarn test
+        run: pnpm test
         env:
           HABITIFY_API_KEY: ${{ secrets.HABITIFY_API_KEY }}
 
       - name: Test packaging
-        run: yarn pack
+        run: pnpm pack
 
       - name: Upload coverage to Codecov
         if: matrix.node-version == '20.x'
