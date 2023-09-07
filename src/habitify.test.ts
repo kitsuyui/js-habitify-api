@@ -33,20 +33,6 @@ describe('habitify client', () => {
     expect(result.data.length).toBeGreaterThan(0)
   })
 
-  it('fetchLogs', async () => {
-    const client = Client.getClientFromEnv()
-    const journal = await client.fetchJournal('2023-07-24T00:00:00+09:00')
-
-    const result = await client.fetchLogs({
-      habitId: journal.data[0].id,
-      fromDate: '2023-07-01T00:00:00+09:00',
-      toDate: '2023-07-24T00:00:00+09:00',
-    })
-    expect(result).toBeDefined()
-    expect(result.data).toBeDefined()
-    expect(result.data.length).toBeGreaterThan(0)
-  })
-
   it('fetchHabits', async () => {
     const client = Client.getClientFromEnv()
     const result = await client.fetchHabits()
@@ -73,7 +59,7 @@ describe('habitify client', () => {
     await expect(result).rejects.toThrowError()
   })
 
-  it('post and delete habit log', async () => {
+  it('fetch, post, delete habit log', async () => {
     const client = Client.getClientFromEnv()
     const testHabitId = '5DD6DC1C-5640-4D9B-9FD9-DEE0000BB845'
     const testBeginDate = '2023-08-04T00:00:00+09:00'
