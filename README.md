@@ -23,6 +23,12 @@ yarn add habitify-api
 npm install habitify-api
 ```
 
+#### pnpm
+
+```sh
+pnpm install habitify-api
+```
+
 ### Example
 
 ```js
@@ -37,19 +43,19 @@ console.log(data)
 ### Build
 
 ```sh
-yarn build
+pnpm build
 ```
 
 ### Run with development mode (watch mode)
 
 ```sh
-yarn dev
+pnpm dev
 ```
 
 ## Test
 
 ```sh
-yarn test
+pnpm test
 ```
 
 ## License
