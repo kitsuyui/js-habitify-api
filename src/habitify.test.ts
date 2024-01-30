@@ -117,7 +117,7 @@ describe('habitify client', () => {
 
     await expect(
       client.postHabitLog({
-        habitId: testHabitId + '_invalid',
+        habitId: `${testHabitId}_invalid`,
         unitType: 'rep',
         targetDate: testBeginDate,
       })
@@ -133,7 +133,7 @@ describe('habitify client', () => {
 
     await expect(
       client.deleteHabitLog({
-        habitId: testHabitId + '_invalid',
+        habitId: `${testHabitId}_invalid`,
         logId: 'invalid',
       })
     ).rejects.toThrowError()
