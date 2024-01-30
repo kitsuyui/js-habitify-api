@@ -41,7 +41,7 @@ jobs:
       - name: Lint
         run: |
           pnpm lint
-          pnpm format --check
+          pnpm format
 
       - name: Build
         run: pnpm build

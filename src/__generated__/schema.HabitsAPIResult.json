@@ -25,7 +25,13 @@
           "type": "boolean"
         }
       },
-      "required": ["errors", "message", "data", "version", "status"],
+      "required": [
+        "errors",
+        "message",
+        "data",
+        "version",
+        "status"
+      ],
       "additionalProperties": false
     },
     "HabitContent": {
@@ -112,7 +118,12 @@
     },
     "TimeOfDay": {
       "type": "string",
-      "enum": ["any_time", "morning", "afternoon", "evening"]
+      "enum": [
+        "any_time",
+        "morning",
+        "afternoon",
+        "evening"
+      ]
     },
     "GoalItem": {
       "type": "object",
@@ -127,7 +138,11 @@
           "$ref": "#/definitions/Periodicity"
         }
       },
-      "required": ["unit_type", "value", "periodicity"],
+      "required": [
+        "unit_type",
+        "value",
+        "periodicity"
+      ],
       "additionalProperties": false
     },
     "UnitType": {
@@ -136,11 +151,20 @@
     },
     "Periodicity": {
       "type": "string",
-      "enum": ["daily", "weekly", "monthly"]
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly"
+      ]
     },
     "LogMethod": {
       "type": "string",
-      "enum": ["manual", "appleHealth", "googleFit", "samsungHealth"]
+      "enum": [
+        "manual",
+        "appleHealth",
+        "googleFit",
+        "samsungHealth"
+      ]
     },
     "Recurrence": {
       "type": "string"
@@ -159,7 +183,11 @@
           "type": "string"
         }
       },
-      "required": ["id", "name", "priority"],
+      "required": [
+        "id",
+        "name",
+        "priority"
+      ],
       "additionalProperties": false
     }
   }
