@@ -1,7 +1,7 @@
 import { describe, it, expect } from '@jest/globals'
 
 import { Client } from './habitify'
-import { HABITIFY_API_HABITS_URL, HabitAPIResult } from './types'
+import { HABITIFY_API_HABITS_URL, type HabitAPIResult } from './types'
 import { validateHabit } from './validators'
 
 describe('habitify client', () => {

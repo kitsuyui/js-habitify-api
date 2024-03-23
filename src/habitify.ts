@@ -1,13 +1,13 @@
 import {
-  DateString,
-  JournalAPIResult,
+  type DateString,
+  type JournalAPIResult,
   HABITIFY_API_JOURNAL_URL,
   HABITIFY_API_LOGS_URL,
   HABITIFY_API_HABITS_URL,
-  LogsAPIResult,
-  HabitAPIResult,
-  HabitsAPIResult,
-  UnitType,
+  type LogsAPIResult,
+  type HabitAPIResult,
+  type HabitsAPIResult,
+  type UnitType,
 } from './types'
 import {
   validateHabit,
