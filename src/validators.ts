@@ -4,7 +4,7 @@ import schemaHabitAPIResult from './__generated__/schema.HabitAPIResult.json'
 import schemaHabitsAPIResult from './__generated__/schema.HabitsAPIResult.json'
 import schemaJournalAPIResult from './__generated__/schema.JournalAPIResult.json'
 import schemaLogsAPIResult from './__generated__/schema.LogsAPIResult.json'
-import {
+import type {
   JournalAPIResult,
   LogsAPIResult,
   HabitAPIResult,
