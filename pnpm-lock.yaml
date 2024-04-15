@@ -35,8 +35,8 @@ devDependencies:
     specifier: ^29.7.0
     version: 29.7.0(@types/node@20.12.7)
   ts-json-schema-generator:
-    specifier: ^1.5.0
-    version: 1.5.1
+    specifier: ^2.0.0
+    version: 2.0.1
   tsup:
     specifier: ^8.0.2
     version: 8.0.2(@swc/core@1.4.14)(typescript@5.4.5)
@@ -3490,8 +3490,8 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /ts-json-schema-generator@1.5.1:
-    resolution: {integrity: sha512-apX5qG2+NA66j7b4AJm8q/DpdTeOsjfh7A3LpKsUiil0FepkNwtN28zYgjrsiiya2/OPhsr/PSjX5FUYg79rCg==}
+  /ts-json-schema-generator@2.0.1:
+    resolution: {integrity: sha512-0sWa9uXFzkcZS/0LV4BLB91elC+2brg6JyIYXZEUCs6P7Z/BXuhUutxO4ssg7Kb9Xe4dzQXsc5IAmOHt7IETmA==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     dependencies:
