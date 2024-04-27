@@ -38,7 +38,7 @@ importers:
         version: 29.7.0(@types/node@20.12.7)
       ts-json-schema-generator:
         specifier: ^2.0.0
-        version: 2.1.0
+        version: 2.1.1
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(@swc/core@1.5.0)(typescript@5.4.5)
@@ -1878,8 +1878,8 @@ packages:
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  ts-json-schema-generator@2.1.0:
-    resolution: {integrity: sha512-w0Mlotd5SIUEGpXcg54UwpTRLXNtUaItt1XQO7mpW63TeV6gKmaGIInENxgccpUkj/ReBxbRoZAN79YU2Mc3YA==}
+  ts-json-schema-generator@2.1.1:
+    resolution: {integrity: sha512-ha5/w3A2APOOn9ET2CfunEXdVOnKmjISTGcxhCkDszmrsRWFfG5F+re5U5onLXo665sZ4BuE2g5jZAjC+CUcgA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -3928,7 +3928,7 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-json-schema-generator@2.1.0:
+  ts-json-schema-generator@2.1.1:
     dependencies:
       '@types/json-schema': 7.0.15
       commander: 12.0.0
