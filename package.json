@@ -11,7 +11,7 @@
     "dev:lib": "\"$npm_execpath\" run build:lib --watch --onSuccess 'node dist/index.js'",
     "test": "jest --coverage --maxWorkers=1",
     "lint": "biome lint .",
-    "format": "biome lint --apply ."
+    "format": "biome lint --write ."
   },
   "exports": {
     ".": {
@@ -27,7 +27,7 @@
     "package.json"
   ],
   "devDependencies": {
-    "@biomejs/biome": "^1.6.2",
+    "@biomejs/biome": "^2.0.0",
     "@jest/globals": "^29.7.0",
     "@swc/core": "^1.4.8",
     "@swc/jest": "^0.2.36",
