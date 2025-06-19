@@ -1,5 +1,14 @@
 # js-habitify-api
 
+## WARNING
+
+This repository is no longer maintained.
+Because I have stopped using Habitify, I will not be able to fix any issues or add new features.
+If you want to continue using this library, please fork it and maintain it yourself.
+
+## Badges
+
+
 [![npm version](https://badge.fury.io/js/habitify-api.svg)](https://badge.fury.io/js/habitify-api)
 [![codecov](https://codecov.io/gh/kitsuyui/js-habitify-api/branch/main/graph/badge.svg?token=PICSCVEEKZ)](https://codecov.io/gh/kitsuyui/js-habitify-api)
 [![test](https://github.com/kitsuyui/js-habitify-api/actions/workflows/test.yml/badge.svg)](https://github.com/kitsuyui/js-habitify-api/actions/workflows/test.yml)
